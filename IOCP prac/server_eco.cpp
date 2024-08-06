@@ -58,8 +58,17 @@ int main()
 	}
 
 	// 리슨
+	if (listen(serverSocekt, 5) == SOCKET_ERROR)
+	{
+		cerr << "listen 실패 오류 : " << WSAGetLastError() << endl;
+
+		closesocket(serverSocekt); // bind 실패로 소켓 닫기
+		WSACleanup(); // winsock 라이브러리 해제 종료
+		return 1;
+	}
 
 	// 어셉트
+	
 
 	// 데이터 송수신
 
